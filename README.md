@@ -1,3 +1,3 @@
-1. Compose Multiple Higher Order Components Together using Recompose
+2. Add Local State to a Functional Stateless Component using Recompose
 
-Learn how to use the 'compose' function to mix together HOCs, even ones from other libraries like 'connect' from redux.
+Learn how to use the 'withState' and 'withHandlers' higher order components to easily add local state to—and create a reusable local state pattern for—your functional stateless components. No need for classes!
