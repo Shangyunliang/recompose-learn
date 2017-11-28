@@ -2,6 +2,8 @@ import React from 'react';
 import { compose, withState, withHandlers } from 'recompose'
 import './App.css'
 
+// 不能够修改这个顺序，虽然compose(h1, h2, h3) = h1(h2(h3(BaseComponent)))
+// 但是执行的时候toggle是从父级上取toggle， 如果外层没有 toggle 取到 undefined
 const withToggle = compose(
   withState('toggledOn', 'toggle', false),
   withHandlers({
