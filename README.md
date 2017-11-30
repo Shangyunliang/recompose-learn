@@ -1,3 +1,3 @@
-3. Add Local State with Redux-like Reducers using Recompose
+3. Add Lifecycle Hooks to a Functional Stateless Component using Recompose
 
-Learn how to use the 'withReducer' higher order component using the alternative reducer form. If you like using reducers in redux, you’ll be able to reuse that same technique but for local state.
+Learn how to use the 'lifecycle' higher-order component to conveniently use hooks without using a class component.
