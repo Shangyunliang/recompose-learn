@@ -1,15 +1,33 @@
 import React from 'react';
-import { compose, withState, withHandlers } from 'recompose'
+import { compose, withReducer, withHandlers } from 'recompose'
 import './App.css'
 
 // 不能够修改这个顺序，虽然compose(h1, h2, h3) = h1(h2(h3(BaseComponent)))
 // 但是执行的时候toggle是从父级上取toggle， 如果外层没有 toggle 取到 undefined
+
+// withReducer<S, A>(
+//   stateName: string,
+//   dispatchName: string,
+//   reducer: (state: S, action: A) => S,
+//   initialState: S | (ownerProps: Object) => S
+// ): HigherOrderComponent
 const withToggle = compose(
-  withState('toggledOn', 'toggle', false),
+  withReducer('toggledOn', 'dispatch', (state, action) => {
+    switch (action.type) {
+      case 'SHOW':
+        return true
+      case 'HIDE':
+        return false
+      case 'TOGGLE':
+        return !state;
+      default:
+        return state;
+    }
+  }, false),
   withHandlers({
-    show: ({ toggle }) => (e) => toggle(true),
-    hide: ({ toggle }) => (e) => toggle(false),
-    toggle: ({ toggle }) => (e) => toggle((current) => !current),
+    show: ({ dispatch }) => (e) => dispatch({type: 'SHOW'}),
+    hide: ({ dispatch }) => (e) => dispatch({type: 'HIDE'}),
+    toggle: ({ dispatch }) => (e) => dispatch({type: 'TOGGLE'}),
    })
 )
 
